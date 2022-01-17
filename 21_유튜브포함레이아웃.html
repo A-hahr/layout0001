@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브포함 레이아웃</title>
+    <style>
+        @font-face {
+            font-family: 'Cafe24SsurroundAir';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            /* 구글폰트나 눈누에서 가져와서 전체 붙여놓고 위의 font-family 부분만 복사해서 원하는 태그의 스타일에 붙여넣기하면 되시겠다. */
+        }
+        * {margin: 0; padding: 0;}
+        li {list-style: none;}
+        a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        html, body {
+            color: #333;
+        }
+
+        /* 이미지가 왼쪽에 있는 레이아웃 */
+        .left {
+            width: 1600px;
+            margin: 100px auto;
+        }
+        .left .top {
+            display: flex;
+            /* 태그명 figure와 div가 가로로 나열된다. */
+            height: 500px;
+            align-items: center;
+            /* 가로로 나열되어 있는 요소들을 수직 정렬 시켜주는 것. 가운데 정렬.자식들을 자신을 기준으로 센터로 나열. */
+            margin-bottom: 50px;
+        }
+        .left .top figure {
+            width: 60%;
+            height: 100%;
+        }
+        .left .top figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .left .top div {
+            width: 40%;
+            padding: 0 60px;
+            /* 이렇게 가로값(40%)이 확정되어 있는 상태에서 padding(60px) 이 더 들어가 버리면 두 값이 합해져서 결과값을 나타내게 된다. 
+            따라서 확정되어 있는 크기에 padding 이 더해지며 마치 margin 을 한 것과 같은 표현이 된다.*/
+            /* 'box-sizing:border-box' 
+            padding 을 포함해서 가로값을 나타낼 수 있는 언어이다. padding 뿐만 아니라 가장자리 선의 두께 등도 포함한다. */
+            box-sizing:border-box
+        }
+
+        /* 오른쪽에 있는 텍스트 div 스타일 */
+        .left .top div h4 {
+            font-size: 25px;
+            margin-bottom: 15px;
+            font-family: 'Cafe24SsurroundAir';
+        }
+        .left .top div .txt {
+            font-size: 16px;
+            color: #7d7d7d;
+            margin-bottom: 13px;
+        }
+        .left .top div dl {
+            display: flex;
+        }
+        .left .top div dl dt {
+            width: 120px;
+            font-weight: bold;
+        }
+        .left .top div .info {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+        .left .top div ul  {
+            display: flex;
+        }
+        .left .top div ul li:nth-child(1) {
+            width: 130px;
+            height: 45px;
+            font-weight: bold;
+            background-color: rgb(214, 72, 16);
+            border: 1px solid rgb(214, 72, 16);
+            text-align: center;
+            line-height: 45px;
+            margin-right: 23px;
+        }
+        .left .top div ul li:nth-child(1):hover {
+            box-shadow: 2px 5px 15px rgb(252, 169, 161);
+        }
+        .left .top div ul li:nth-child(2) {
+            width: 130px;
+            height: 45px;
+            background-color: rgb(255, 240, 240);
+            border: 1px solid black;
+            text-align: center;
+            line-height: 45px;
+        }
+        .left .top div ul li:nth-child(1) a {
+            color: #fff;
+        }
+
+        /* 유튜브 스타일 */
+        .bottom div {
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 비율 */
+            position: relative;
+        }
+        .bottom div iframe {
+            position: absolute;
+            top: o;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 그래픽 디자인 스타일 */
+        .g_design {
+            text-align: center;
+            background: url('images/cont_bg.jpg') center center / cover no-repeat;
+            padding: 100px 0;
+            background-attachment: fixed;
+            font-family: 'Cafe24SsurroundAir';
+        }
+        .g_design h3 {
+            font-size: 50px;
+        }
+        .g_design ul {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .g_design ul li {
+            margin: 0 25px;
+        }
+        .g_design div {
+            width: 1600px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;/* 부모의 크기(가로 1600px)에 맞처서 밑으로 떨어지게 한다.. */
+            justify-content: space-between; /* 양끝에 붙여서 정렬. 'flex' 사용할 때 가능 */
+        }
+        .g_design div figure {
+            width: 32%;
+            height: 335px;
+            margin: 20px 0;
+        }
+        .g_design div figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* footer 스타일 */
+        footer {
+            background-color: #333;
+            padding: 50px 0;
+        }
+        footer dl {
+            width: 300px;
+            display: flex;/* 
+            justify-content: center; */
+            margin: 7px auto;
+        }
+        footer dl dt {
+            color: #fff;
+            width: 150px;
+        }
+        footer dl dd {
+            color: #fff;
+        }
+        footer dl dd a {
+            color: #fff;
+        }
+        footer p {
+            color: #fff;
+            text-align: center;
+        }
+        footer p a {
+            color: #fff;
+        }
+        footer .copy {
+            color: rgba(255, 255, 255, 0.5); /* 마지막 수치는 투명도이다. */
+            margin-top: 40px;
+        }
+
+        /* 반응형으로 만들 때는 'media screen'이 필요함. */
+        /* 기본적인 해상도 크기 = 1920px 
+        태블릿으로 넘어가는 크기 = 1024px
+        (무슨 말인가 하면, 상단의 메뉴가 브라우저가 작아짐에 따라 
+        햄버거 아이콘으로 변환되는 시점을 코딩 시 보통 1024px 크기로 잡는다는 말)
+        태블릿 + 모바일 767px
+        모바일 480px ~ 320px
+        (하지만 어떤 기본값 정도일 뿐이지 무조건 이렇게 해야 한다는 것은 아니다.) */
+
+        /* 컨테이너 중심축 가로크기 100%로 맞추는 스타일 */
+        @media screen and (max-width: 1600px) {
+            .left {width: 100%;}
+            .g_design div {
+                width: 95%;
+                margin: 0 auto;
+            }
+        } /* 1600px */
+
+        /* 해상도크기 1024px 이하일때 부터 텍스트 디자인 깨지지 않게 변환하기 위한 스타일 */
+        @media screen and (max-width: 1024px) {
+            .left:nth-child(2) .top div {
+                order: 1; /* flex 자식요소의 순번을 변경해준다. 양수는 앞으로, 음수는 뒤로 배치해준다. */
+            }
+            .left .top {
+                flex-wrap: wrap;
+                height: auto;
+            }
+            .left .top figure {
+                width: 100%;
+            }
+            .left .top div {
+                width: 100%;
+                padding: 0 20px;
+            }
+        } /* 1024PX */
+
+        /* 767px 이하일 때 밑의 그래픽디자인 사진을 2개씩 3줄로 배열 */
+        @media screen and (max-width: 767px) {
+            .g_design div figure {
+                width: 49%;
+                margin: 10px 0;
+            }
+        } /* 767px */
+
+        @media screen and (max-width: 414px) {
+            .g_design div figure {
+                width: 100%;
+            }
+        } /* 414px */
+    </style>
+<body>
+    <section class="left">
+        <div class="top">
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북, 향수병"/>
+            </figure>
+            <div>
+                <h4>바버, 오늘과 과거를 잇다.</h4>
+                <p class="txt">연출, 촬영, 편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>Premiere Pro, After Effect..</dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>3m 15s</dd>
+                </dl>
+                <dl>
+                    <dt>BGM</dt>
+                    <dd>Jonny Stimmson - Flower</dd>
+                </dl>
+                <p class="info">제작목적 및 콘셉트 : Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem reiciendis, quod sunt, modi nulla obcaecati dolore nobis atque eius excepturi nisi adipisci rem! Ex, voluptates sapiente ipsum perferendis officia tempore.</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+        </div> <!-- .top end -->
+        <div class="bottom">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OK9RxzHB6hY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div> <!-- .bottom end -->
+    </section> <!-- .left end (이미지가 들어가는 부분) -->
+    <section class="left">
+        <div class="top">
+            <div>
+                <h4>바버, 오늘과 과거를 잇다.</h4>
+                <p class="txt">연출, 촬영, 편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>Premiere Pro, After Effect..</dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>3m 15s</dd>
+                </dl>
+                <dl>
+                    <dt>BGM</dt>
+                    <dd>Jonny Stimmson - Flower</dd>
+                </dl>
+                <p class="info">제작목적 및 콘셉트 : Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem reiciendis, quod sunt, modi nulla obcaecati dolore nobis atque eius excepturi nisi adipisci rem! Ex, voluptates sapiente ipsum perferendis officia tempore.</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북, 향수병"/>
+            </figure>
+        </div> <!-- .top end -->
+        <div class="bottom">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OK9RxzHB6hY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div> <!-- .bottom end -->
+    </section> <!-- .left end (이미지가 들어가는 부분) -->
+
+    <!-- 그래픽 디자인, 시각디자인, 3d제작 등 영상물 이외의 제작물들을 디스플레이 하기 위한 페이지 -->
+    <section class="g_design">
+        <h3>GRAPHIC DESIGN</h3>
+        <ul>
+            <li><a href="#">카테고리</a></li>
+            <li><a href="#">BI/UI 디자인</a></li>
+            <li><a href="#">시안디자인</a></li>
+            <li><a href="#">카테고리</a></li>
+        </ul>
+        <div>
+            <figure>
+                <img src="images/img01.jpg" alt="셀러트"/>
+            </figure>
+            <figure>
+                <img src="images/img02.jpg" alt="셀러트"/>
+            </figure>
+            <figure>
+                <img src="images/img03.jpg" alt="셀러트"/>
+            </figure>
+            <figure>
+                <img src="images/img04.jpg" alt="셀러트"/>
+            </figure>
+            <figure>
+                <img src="images/img05.jpg" alt="셀러트"/>
+            </figure>
+            <figure>
+                <img src="images/img06.jpg" alt="셀러트"/>
+            </figure>
+        </div>
+    </section> <!-- .g_design end -->
+    <footer> <!-- 홈페이지 맨 밑에 개인정보들을 넣거나 하는 것 많이 봤쥬? 그때 사용되는 태그입니다. -->
+        <dl>
+            <dt>연락처</dt>
+            <dd><a href="tel:010-2412-3525">010.2412.3525</a></dd>
+        </dl>
+        <dl>
+            <dt>카카오톡 아이디</dt>
+            <dd>카카오톡 아이디명</dd>
+        </dl>
+        <dl>
+            <dt>인스타 아이디</dt>
+            <dd>인스타 아이디명</dd>
+        </dl>
+        <dl>
+            <dt>이메일 아이디</dt>
+            <dd>justdowhatyoulove3525@gmail.com</dd>
+        </dl>
+        <p class="down"><a href="#">이력서 다운</a></p>
+        <p class="copy">COPYRIGHT 2022 디자이너 권일환 .ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+</html>
